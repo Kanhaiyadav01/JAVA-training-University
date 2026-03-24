@@ -39,4 +39,22 @@ public int powerN(int base, int n) {
   if(n % 2 == 0) return var*var;
   else return base*var*var;
 }
-
+// class Solution {
+    public int numberOfWays(int n) {
+        // code here
+         if (n < 0) return 0;
+        if (n == 0) return 1;
+        
+        int ans = 0;
+        
+        // if one tile is placed vertically
+        ans = numberOfWays(n - 1);
+        
+        // if two tiles are placed horizontally.
+        ans += numberOfWays(n - 2);
+        
+        return ans;
+        
+        
+    }
+}
