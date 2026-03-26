@@ -44,4 +44,30 @@ class Solution {
   }
 }
 
-// 
+// 3 selection sort
+class Solution {
+    public int[] selectionSort(int[] nums) {
+
+        for(int i = 0; i < nums.length-1; i++){
+            
+            int mini = i;
+
+            for(int j = i+1; j < nums.length; j++){
+
+                if(nums[j] < nums[mini]){
+                mini = j;
+                } // update mini
+            }
+
+            // swap only if i is chng
+            if(mini != i){
+                int temp = nums[i];
+                nums[i] = nums[mini];
+                nums[mini] = temp;
+            }
+        }
+
+        return nums;
+
+    }
+}
