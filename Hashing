@@ -1,4 +1,5 @@
 // 1 . Longest Consecutive Sequence in an Array
+// better
 class Solution {
     public int longestConsecutive(int[] nums) {
         int n = nums.length;
@@ -23,6 +24,38 @@ class Solution {
                 cnt = 1;
                 lstSmaller = nums[i];
             }
+            longest = Math.max(longest , cnt);
+        }
+        return longest;
+    }
+}
+
+// brute
+class Solution {
+
+    private boolean linearSearch(int []nums ,int ele){
+        int n = nums.length;
+        for(int i = 0; i < n; i++){
+            if(nums[i] == ele){
+                return true;
+            }
+        }
+        return false;
+    }
+    public int longestConsecutive(int[] nums) {
+        
+        int n = nums.length;
+        int longest = 1;
+
+        for(int i = 0; i < n; i++){
+            int ele = nums[i];
+            int cnt = 1;
+
+            while(linearSearch(nums , ele + 1) == true){
+                ele += 1;
+                cnt += 1;
+            }
+            // update longest 
             longest = Math.max(longest , cnt);
         }
         return longest;
