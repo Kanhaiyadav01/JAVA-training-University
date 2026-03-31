@@ -363,3 +363,30 @@ public List<Integer> majorityElementTwo(int[] nums) {
 
 // t/c = O(nlogn)
 // s/c = O(n)
+
+//
+Sort an array of 0's 1's and 2's
+class Solution {
+    public void sortZeroOneTwo(int[] nums) {
+        int cnt_0 = 0;
+        int cnt_1 = 0;
+        int cnt_2 = 0;
+
+        for(int i = 0; i < nums.length; i++){
+            if(nums[i] == 0){
+                cnt_0++;
+            }
+            else if(nums[i] == 1){
+                cnt_1++;
+            }
+            else {
+                cnt_2++;
+            }
+        }
+
+        for(int i = 0; i < cnt_0; i++) nums[i] = 0;
+        for(int i = cnt_0; i < cnt_0 + cnt_1; i++) nums[i] = 1;
+        for(int i = cnt_0 + cnt_1; i < nums.length; i++) nums[i] = 2;
+
+    }
+}
