@@ -447,3 +447,32 @@ public class Solution {
         return  new int[] {missing , repeat};
     }
 }
+
+// better
+ public static int[] missingAndRepeating(ArrayList<Integer> arr, int n) {
+        // Write your code here
+        int hash[] = new int [n + 1];
+
+        for(int i = 0; i < n; i++){
+            hash[arr.get(i)]++;
+        }
+
+        int repeat = -1;
+        int missing = -1;
+        for(int i = 1; i <= n; i++){
+            if(hash[i] == 2){
+                repeat = i;
+            }
+            else if(hash[i] == 0){
+                missing = i;
+            }
+
+            if(missing != -1 && repeat != -1){
+                break;
+            }
+        }
+        return new int[] {missing , repeat};
+
+
+    }
+}
