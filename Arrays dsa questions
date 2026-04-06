@@ -694,3 +694,38 @@ class Solution {
        return maxLen;
     }
 }
+
+class Solution {
+    public int longestSubarray(int[] nums, int k) {
+       int n = nums.length;
+
+       Map<Integer , Integer> preSumMap = new HashMap<>();
+       int sum = 0;
+       int maxLen = 0;
+       for(int i = 0; i < n; i++){
+        // presum till i idx
+        sum += nums[i];
+
+        // if sum equals k , update maxLen
+        if(sum == k){
+            maxLen = Math.max(maxLen , i+1);
+        }
+
+        // cal sum of remaining part 
+        int rem = sum - k;
+
+        // cal the len and update maxLen
+        if(preSumMap.containsKey(rem)){
+            int len = i - preSumMap.get(rem);
+            maxLen = Math.max(maxLen , len);
+        }
+
+        // update map if sum is not alredy present
+        if(!preSumMap.containsKey(sum)){
+            preSumMap.put(sum , i);
+        }
+
+       }
+       return maxLen;
+    }
+}
