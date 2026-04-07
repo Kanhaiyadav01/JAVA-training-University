@@ -659,7 +659,7 @@ class Solution {
         }
     }
 }
-
+// 6 april
 class Solution {
     public int longestSubarray(int[] nums, int k) {
        int n = nums.length;
@@ -727,5 +727,37 @@ class Solution {
 
        }
        return maxLen;
+    }
+}
+
+
+// 7 april 
+Subarray Sum Equals K
+class Solution {
+    public int subarraySum(int[] nums, int k) {
+
+        // create hashmap and put 0 with cnt 1
+        Map<Integer, Integer> map = new HashMap<>();
+        map.put(0,1);
+
+        int preSum = 0;
+        int cnt = 0;
+
+        for(int i = 0; i < nums.length; i++){
+            // cal presum
+            preSum += nums[i];
+
+            // check Is presum -k extis?
+            if(map.containsKey(preSum - k)){
+                // then update cnt 
+                cnt += map.get(preSum - k);
+            }
+
+            // now add currnt presum in hashmap
+            map.put(preSum , map.getOrDefault(preSum , 0) + 1);
+        }
+        return cnt;
+
+
     }
 }
