@@ -21,3 +21,36 @@ class Solution {
        return -1;
     }
 }
+
+// recursive 
+class Solution {
+
+    private int recFun(int nums[] , int low , int high , int target){
+        // base case
+        if(low > high) return -1;
+
+        int idx;
+
+        int mid = (low + high) / 2;
+
+        // case 1 
+        if(target == nums[mid]) idx = mid;
+
+        // case 2 
+        else if(target < nums[mid]){
+            idx = recFun(nums , low , mid-1 , target);
+        }
+        // case 3 
+        else {
+            idx = recFun(nums , mid+1 , high , target);
+        }
+
+        return idx;
+    }
+
+    public int search(int[] nums, int target) {
+       int n = nums.length;
+
+       return recFun(nums , 0 , n-1 , target);
+    }
+}
