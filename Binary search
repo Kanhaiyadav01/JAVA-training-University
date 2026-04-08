@@ -1,1 +1,23 @@
+1 Search X in sorted array
+class Solution {
+    public int search(int[] nums, int target) {
+       int left = 0;
+       int right = nums.length -1;
 
+       while(left <= right){
+           // find mid 
+         int mid = (left + right) / 2;
+           // case 1 when mid = target
+         if(nums[mid] == target) return mid;
+
+         // case 2 when target> mid
+         else if(nums[mid] < target){
+            left = mid + 1;
+          }
+          else {
+             right = mid - 1;
+          }
+       }
+       return -1;
+    }
+}
