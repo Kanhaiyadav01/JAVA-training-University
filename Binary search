@@ -149,4 +149,46 @@ class Solution {
     }
 }
 
+// optimal
+class Solution {
+    public boolean searchInARotatedSortedArrayII(int[] nums, int k) {
+        int low = 0;
+        int high = nums.length - 1;
+
+        while(low <= high){
+            int mid = (low + high) / 2;
+
+            if(nums[mid] == k) return true;
+
+            // handle duplicates if low mid and high are equal
+            if(nums[low] == nums[mid] && nums[mid] == nums[high]){
+                low = low + 1;
+                high = high - 1;
+                continue;
+            }
+
+            // check Is left half sorted?
+            if(nums[low] <= nums[mid]){
+                // now check Is K lies in this range 
+                if(nums[low] <= k && k <= nums[mid]){
+                    high = mid - 1;
+                }
+                else {
+                    low = mid + 1;
+                }
+            }
+            // right
+            else {
+                if(nums[mid] <= k && k <= nums[high]){
+                    low = mid + 1;
+                }
+                else {
+                    high = mid - 1;
+                }
+            }
+        }
+        return false;
+    }
+}
+
 
