@@ -211,3 +211,22 @@ class Solution {
         return minDist == Integer.MAX_VALUE ? -1 : minDist;
 
 
+
+class Solution {
+  public int floorSqrt(int n) {
+    int ans = 0;
+    for (int i = 0; i <= n; i++) {
+        long val = (long)i * (long)i;
+      if (val <= (long)n) {
+        ans = i;
+      }
+      else {
+         break;
+      }
+        
+      
+    }
+    return ans;
+  }
+}
+
